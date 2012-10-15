@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nom: MyString
+  cave: MyString
+  annee: 1
+  couleur: MyString
+
+two:
+  nom: MyString
+  cave: MyString
+  annee: 1
+  couleur: MyString
