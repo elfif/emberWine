@@ -2,7 +2,7 @@
 #source "http://gems.rubyforge.org"
 source "http://gemcutter.org"
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -10,7 +10,7 @@ gem 'rails', '3.2.8'
 gem 'pg'
 gem 'active_model_serializers'
 gem 'execjs'
-gem 'therubyracer'
+#gem 'therubyracer'
 gem 'ember-rails'
 
 group :development do
