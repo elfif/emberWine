@@ -1,3 +1,3 @@
-EmberWine.VinView = Ember.View.extend({
+App.VinView = Ember.View.extend({
   templateName: 'vin'
 });
