@@ -8,8 +8,8 @@ App.Router = Ember.Router.extend({
         }),
 
         vins: Ember.Route.extend({
-            route: '/vins',
             showVin: Ember.Route.transitionTo('vin'),
+            route: '/vins',
             connectOutlets: function(router) {
                 router.get('applicationController').connectOutlet('vins');
             }
