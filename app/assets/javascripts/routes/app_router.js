@@ -6,24 +6,28 @@ App.Router = Ember.Router.extend({
             route: '/',
             redirectsTo: 'vins'
         }),
+
         vins: Ember.Route.extend({
             route: '/vins',
-            showVin: Ember.Router.transitionTo('vin'),
-            enter: function() {
-                alert("la route des vins est ok");
-            },
+            showVin: Ember.Route.transitionTo('vin'),
             connectOutlets: function(router) {
-                router.get('ApplicationController').connectOutlet('App.VinsView', App.Vin.find());
-//                    content: App.Vin.find()
-//                    context: App.Vin.find()
-
+                router.get('applicationController').connectOutlet('vins');
             }
         }),
+
         vin: Ember.Route.extend({
             route: '/vins/:vin_id',
-            showVins: Ember.Router.transitionTo('vins'),
+            deserialize: function(router, context){
+                return App.Vin.find( context.id );
+            },
+            serialize: function(router, context){
+                return {
+                     id: context.id
+                }
+            },
+            showVins: Ember.Route.transitionTo('vins'),
             connectOutlets: function(router, vin) {
-                router.get('ApplicationController').connectOutlet(App.VinView, vin);
+                router.get('applicationController').connectOutlet('vin');
             }
         })
     })

@@ -1,7 +1,9 @@
 <h3>Liste des vins 2</h3>
 <ul>
 {{#each vin in controller}}
-    <li><a {{action showVin context="vin" href=true}}> {{vin.nom}} </a></li>
+{{#with vin}}
+    <li><a {{action showVin this href=true}}> {{vin.nom}} </a></li>
+{{/with}}
 {{/each}}
 </ul>
 {{outlet}}
