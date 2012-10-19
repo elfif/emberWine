@@ -2,7 +2,7 @@
 <ul>
 {{#each vin in controller}}
 {{#with vin}}
-    <li><a {{action showVin this href=true}}> {{vin.nom}} </a></li>
+    <li><a {{action showVin vin href=true}}> {{vin.nom}} {{vin.id}} </a></li>
 {{/with}}
 {{/each}}
 </ul>

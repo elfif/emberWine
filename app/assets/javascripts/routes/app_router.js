@@ -1,34 +1,37 @@
 App.Router = Ember.Router.extend({
     enableLogging: true,
-
+    goToVins: Ember.Route.transitionTo('vins.index'),
     root: Ember.Route.extend({
         index: Ember.Route.extend({
             route: '/',
-            redirectsTo: 'vins'
+            redirectsTo: 'vins.index'
         }),
 
         vins: Ember.Route.extend({
-            showVin: Ember.Route.transitionTo('vin'),
+            showVin: Ember.Route.transitionTo('vins.vin'),
             route: '/vins',
-            connectOutlets: function(router) {
-                router.get('applicationController').connectOutlet('vins');
-            }
-        }),
-
-        vin: Ember.Route.extend({
-            route: '/vins/:vin_id',
-            deserialize: function(router, context){
-                return App.Vin.find( context.id );
-            },
-            serialize: function(router, context){
-                return {
-                     id: context.id
+            index: Ember.Route.extend({
+                route: '/',
+                connectOutlets: function(router, context) {
+                    router.get('applicationController').connectOutlet('vins');
                 }
-            },
-            showVins: Ember.Route.transitionTo('vins'),
-            connectOutlets: function(router, vin) {
-                router.get('applicationController').connectOutlet('vin');
-            }
+            }),
+
+            vin: Ember.Route.extend({
+                route: '/vin/:id',
+                deserialize: function(router, context){
+                    return App.Vin.find( context.id );
+                },
+                serialize: function(router, context){
+                    return {
+                        id: context.get('id')
+                    }
+                },
+                showVins: Ember.Route.transitionTo('vins'),
+                connectOutlets: function(router, aVin) {
+                    router.get('applicationController').connectOutlet('vin', aVin);
+                }
+            })
         })
     })
 });
