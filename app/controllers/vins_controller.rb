@@ -31,7 +31,7 @@ class VinsController < ApplicationController
 
   end
 
-  def create
+  def update
     @vin = Vin.find(params[:id])
 
     respond_to do |format|

@@ -43,9 +43,9 @@ App.Router = Ember.Router.extend({
                 },
 
                 connectOutlets: function(router, context){
+                    router.get('applicationController').connectOutlet('editVin');
                     router.get('editVinController').enterEditing();
                     //router.get('vinsController').connectOutlet('newVin');
-                    router.get('applicationController').connectOutlet('editVin', {});
                     //router.get('editVinController').connectOutlet('newVin');
                     
                 },
