@@ -1,0 +1,23 @@
+{{#with content}}
+    <div>
+        <label for="nom">Nom : </label>
+        {{view Ember.TextField valueBinding="nom" id="nom" placeholder="Nom" required="true"}}
+    </div>
+    <div>
+        <label for="cave">Cave : </label>
+        {{view Ember.TextField valueBinding="cave" id="cave" placeholder="Cave" required="true"}}
+    </div>
+    <div>
+        <label for="couleur">Couleur : </label>
+        {{view Ember.TextField valueBinding="couleur" id="couleur" placeholder="Couleur" required="true"}}
+    </div>
+    <div>
+        <label for="annee">Année : </label>
+        {{view Ember.TextField valueBinding="annee" id="annee" placeholder="Année" required="true"}}
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+    </div>
+{{/with}}
+
+
