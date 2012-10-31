@@ -10,7 +10,14 @@ gem 'rails', '3.2.3'
 gem 'pg'
 gem 'active_model_serializers'
 gem 'execjs'
-gem 'therubyracer'
+
+
+#spécial pour pouvoir utiliser le même projet dans Win7 et GuyLux
+if !(RUBY_PLATFORM=~ /i386-mingw32/)
+   gem 'therubyracer'
+end
+
+
 gem 'ember-rails'
 
 group :development do

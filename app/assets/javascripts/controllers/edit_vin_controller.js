@@ -6,8 +6,15 @@ App.EditVinController =  Ember.ObjectController.extend({
         if (this.get('content.id')) {
             this.transaction.add(this.get('content'));
         } else {
+            alert('creation');
             this.set('content', this.transaction.createRecord(App.Vin, {}));
         }
+    },
+
+    enterCreating:function () {
+        this.transaction = App.store.transaction();
+        this.set('content', this.transaction.createRecord(App.Vin, {}));
+        
     },
 
     exitEditing:function () {

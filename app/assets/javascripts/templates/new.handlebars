@@ -16,7 +16,16 @@
         {{view Ember.TextField valueBinding="annee" id="annee" placeholder="Année" required="true"}}
     </div>
     <div>
-        <button type="submit" class="btn btn-primary">Ajouter</button>
+        <button type="submit" class="btn btn-primary">
+            {{#if id}}
+                Modifier
+            {{else}}
+                Ajouter
+            {{/if}}
+        </button>
+    </div>
+    <div>
+        <p><a {{ action goToVins href=true}}>Annuler</a></p>
     </div>
 {{/with}}
 
