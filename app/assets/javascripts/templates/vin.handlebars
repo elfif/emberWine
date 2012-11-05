@@ -5,5 +5,15 @@
 {{ annee }}<br />
 <label>Couleur :</label>
 {{ couleur }}<br />
-
-<p><a {{ action goToVins href=true}} >Liste des vins</a></p>
+<ul>
+{{#each com in comments}}
+	<li>
+		{{com.libelle}} - Note : {{com.note}}/10
+	</li>
+{{/each}}
+</ul>
+{{outlet}}
+<br />
+<a {{ action gotoNewComment href=true}}>Nouveau commentaire</a>
+<a {{ action destroyVin target="controller" href=true }}> Supprimer </a>
+<a {{ action goToVins href=true}} >Liste des vins</a>

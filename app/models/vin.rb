@@ -1,3 +1,5 @@
 class Vin < ActiveRecord::Base
-  attr_accessible :annee, :cave, :couleur, :nom
+
+	has_many :comments
+ 	attr_accessible :annee, :cave, :couleur, :nom
 end

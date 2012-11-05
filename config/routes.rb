@@ -1,4 +1,6 @@
 EmberWine::Application.routes.draw do
+  resources :comments
+
   resources :vins
   root :to => 'vins#index'
 

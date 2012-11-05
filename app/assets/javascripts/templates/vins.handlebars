@@ -1,12 +1,10 @@
 <h3>Liste des vins 2</h3>
 <ul>
 {{#each vin in controller}}
-{{#with vin}}
     <li>
-    	<a {{action showVin vin href=true}}> {{vin.nom}} {{vin.id}} </a>
-    	<a {{ action modifVin vin href=true}} >Modifier ce vin</a>
+    	<a {{ action showVin vin href=true }}> {{vin.nom}} </a> ||
+    	<a {{ action modifVin vin href=true }}> Modifier </a> 
     </li>
-{{/with}}
 {{/each}}
 </ul>
 <a {{action gotoNewVin href=true}}>Ajouter un vin</a>

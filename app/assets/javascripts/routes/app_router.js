@@ -11,7 +11,12 @@ App.Router = Ember.Router.extend({
         vins: Ember.Route.extend({
             showVin: Ember.Route.transitionTo('vins.vin'),
             modifVin: Ember.Route.transitionTo('vins.editVin'),
-            gotoNewVin: Ember.Route.transitionTo('vins.newVin'), 
+            gotoNewVin: Ember.Route.transitionTo('vins.newVin'),
+
+            deleteVin: function(router, aVin){
+                router.get('vinController').destroyVin(aVin);
+            },
+
             route: '/vins',
 
             index: Ember.Route.extend({
@@ -24,18 +29,47 @@ App.Router = Ember.Router.extend({
             vin: Ember.Route.extend({
                 route: '/vin/:id',
                 
-                deserialize: function(router, context){
+                /*deserialize: function(router, context){
                     return App.Vin.find( context.id );
                 },
                 serialize: function(router, context){
                     return {
                         id: context.get('id')
                     }
-                },
+                },*/
+
                 showVins: Ember.Route.transitionTo('vins'),
+                gotoNewComment: Ember.Route.transitionTo('vins.vin.comments.newComment'),
+
                 connectOutlets: function(router, aVin) {
                     router.get('applicationController').connectOutlet('vin', aVin);
-                }
+                }, 
+
+                comments: Ember.Route.extend({
+                    route: '/comments',
+
+                    newComment: Ember.Route.extend({
+                        route: '/new', 
+
+                        deserialize: function(router, context){
+                            return App.Comment.find( context.id );
+                        },
+                        serialize: function(router, context){
+                            return {
+                                id: context.get('id')
+                            }
+                        },
+
+                        cancelEdit:function (router) {
+                          router.transitionTo('vins.vin');
+                        },                        
+
+                        connectOutlets: function(router, context){
+                            router.get('vinController').connectOutlet('editComment');
+                            router.get('editCommentController').enterCreating();
+                        }
+                    })
+                })
             }),
 
             newVin: Ember.Route.extend({
